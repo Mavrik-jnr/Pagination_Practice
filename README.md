@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project where i revisit the beloved GraphQL and practice Pagination, JS Array Methods on complex Data strcutures, and styling Tables
+This is a [Next.js](https://nextjs.org/) project where i revisit the beloved GraphQL and practice Pagination, JS Array Methods on complex Data structures, and styling Tables
 
 Technologies Used: ChakraUI, Next14, Typescript, Apollo Client, Material UI, GraphQL-codegen
 
