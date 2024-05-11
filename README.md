@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project where i revisit the beloved GraphQL and practice Pagination, JS Array Methods on complex Data strcutures, and styling Tables
+
+Technologies Used: ChakraUI, Next14, Typescript, Apollo Client, Material UI, GraphQL-codegen
 
 ## Getting Started
 
