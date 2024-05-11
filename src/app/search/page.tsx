@@ -6,9 +6,10 @@ import CharacterCard, { CHARACTER } from "@/components/CharacterCard";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 
 import React, { useEffect, useState } from 'react'
-import { GET_CHARACTERS } from '../page';
+
 import { Pagination, Box } from '@mui/material';
 import { useDebouncedCallback } from 'use-debounce';
+import { GET_CHARACTERS } from '@/graphql/queries/GetCharacters';
 
 type Props = {}
 

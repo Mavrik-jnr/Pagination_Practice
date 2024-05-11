@@ -1,6 +1,7 @@
 "use client";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 type Props = {};
@@ -254,10 +255,19 @@ function Page({}: Props) {
   }, []);
   return (
     <>
-      <h1 className="text-center text-2xl mb-8">
-        People Table (click on a title to sort in ASC/DSC order)
-      </h1>
+         <div className='flex gap-4'>
 
+<Link href="/" className='text-blue-200 mb-24'>Go Home</Link>
+<Link href="/Search" className='text-blue-200 mb-24 underline'>Search</Link>
+</div>
+
+ 
+
+      <table className="border-collapse">
+        
+      <caption className="text-center text-2xl mb-8 w-full">
+        People Table (click on a title to sort in ASC/DSC order)
+      </caption>
       <InputGroup size="md" flex="initial" alignItems="center" color="black" className="mb-8">
         <Input
           p="1rem"
@@ -274,8 +284,6 @@ function Page({}: Props) {
           ></Image>
         </InputRightElement>
       </InputGroup>
-
-      <table className="border-collapse">
         <thead className="flex justify-around w-full gap-10">
           <th
             className="text-center"

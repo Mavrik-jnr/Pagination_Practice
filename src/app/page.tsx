@@ -1,5 +1,6 @@
 "use client"
 import CharacterCard, { CHARACTER } from "@/components/CharacterCard";
+import { GET_CHARACTERS } from "@/graphql/queries/GetCharacters";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { SimpleGrid } from "@chakra-ui/react";
 import Image from "next/image";
@@ -7,22 +8,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
+
  
-export const GET_CHARACTERS = gql`
-query GetCharacters ($page:Int, $nameSearch: String){
-  characters (page:$page, filter:{name:$nameSearch}){
-    info{
-      pages,
-      count
-    },
-    results{
-      image, 
-      name, 
-      status
-    }
-  }
-}
-`
+
+
+
 export default function Home() {
   
   
