@@ -70,6 +70,13 @@ function Page({}: Props) {
     // flattened;
   };
 
+  //recursive flattner 
+
+  // const flatnerRecursive = ((data:any[]) =>{
+  //     const flatnedArray = []
+  //     for (let item of data ){}
+  // })
+
   //This returns a boolean on whether to toggle the ascending or descending order for the sort algorithm
   const flipper = (header: string) => {
     if (activeSort === header) {
@@ -89,7 +96,7 @@ function Page({}: Props) {
   const handleSort = (header: string) => {
     //Sort data
 
-    if (header === "StreetName") {
+    if (header === "street name") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.street.name < b.location.street.name) {
           return flipper(header) ? 1 : -1;
@@ -103,7 +110,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "StreetNumber") {
+    if (header === "street number") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.street.number < b.location.street.number) {
           return -1;
@@ -117,7 +124,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "City") {
+    if (header === "city") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.city < b.location.city) {
           return -1;
@@ -131,7 +138,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Country") {
+    if (header === "country") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.country < b.location.country) {
           return -1;
@@ -145,7 +152,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Postcode") {
+    if (header === "postcode") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.postcode < b.location.postcode) {
           return -1;
@@ -159,7 +166,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Latitude") {
+    if (header === "latitude") {
       const sortedStreets = data.sort((a: any, b: any) => {
         return flipper(header)
           ? parseInt(a.location.coordinates.latitude) -
@@ -170,7 +177,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Longtitude") {
+    if (header === "longitude") {
       const sortedStreets = data.sort((a: any, b: any) => {
         return (
           parseInt(a.location.coordinates.longitude) -
@@ -180,7 +187,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Offset") {
+    if (header === "offset") {
       const sortedStreets = data.sort((a: any, b: any) => {
         return (
           parseInt(a.location.timezone.offset) -
@@ -199,7 +206,7 @@ function Page({}: Props) {
 
       setData([...sortedStreets]);
     }
-    if (header === "Description") {
+    if (header === "description") {
       const sortedStreets = data.sort((a: any, b: any) => {
         if (a.location.timezone.description < b.location.timezone.description) {
           return -1;
@@ -261,13 +268,9 @@ function Page({}: Props) {
 <Link href="/Search" className='text-blue-200 mb-24 underline'>Search</Link>
 </div>
 
- 
-
-      <table className="border-collapse">
-        
-      <caption className="text-center text-2xl mb-8 w-full">
+<h1 className="text-center text-2xl mb-8 w-full">
         People Table (click on a title to sort in ASC/DSC order)
-      </caption>
+      </h1>
       <InputGroup size="md" flex="initial" alignItems="center" color="black" className="mb-8">
         <Input
           p="1rem"
@@ -284,47 +287,54 @@ function Page({}: Props) {
           ></Image>
         </InputRightElement>
       </InputGroup>
-        <thead className="flex justify-around w-full gap-10">
-          <th
-            className="text-center"
-            onClick={() => handleSort("StreetNumber")}
-          >
-            Street Number
-          </th>
-          <th className="text-center" onClick={() => handleSort("StreetName")}>
-            Street Name
-          </th>
-          <th onClick={() => handleSort("City")}>City</th>
-          <th onClick={() => handleSort("State")}>State</th>
-          <th onClick={() => handleSort("Country")}>Country</th>
-          <th onClick={() => handleSort("Postcode")}>Postcode</th>
-          <th onClick={() => handleSort("Latitude")}>Latitude</th>
-          <th onClick={() => handleSort("Longtitude")}>Longtitude</th>
-          <th onClick={() => handleSort("Offset")}>Offset</th>
-          <th onClick={() => handleSort("Description")}>Description</th>
-        </thead>
-        {data.map((item: any) => {
+
+      <table className="border-collapse my-6 text-[12px] min-w-[400px] w-full border-[#E0E0E0] border-[1px]">
+        
+     
+    <thead >
+
+ 
+        <tr>
+         {
+          searchKeys.map((item:string, idx:number)=>{return(
+            
+              <th key={idx} className="text-left capitalize px-2 xl:px-6 py-2 border-[1px] border-[#E0E0E0] bg-white text-black " onClick={() => handleSort(item)}>
+                {item}
+              </th>
+      
+          
+          )}) 
+          
+         }
+         </tr>
+         </thead>
+         <tbody className="" >
+        {data.map((item: any, index:number) => {
           return (
-            <>
-              <tbody className="flex w-full justify-around  gap-10">
+           
+             <tr key={index}  className="  ] bg-white text-black first:border-r-black odd:bg-[#F8F8F8]">
                 {flatner(Object.values(item.location)).map(
                   (locationsDat: any, idx: number) => {
                     return (
-                      <tr key={idx}>
-                        <td key={idx} className="text-left">
+                      
+                        <td key={idx} className="text-left px-2 border-[1px] border-[#E0E0E0]  xl:px-6 py-2">
                           {locationsDat}
                         </td>
-                      </tr>
+                     
                     );
                   }
                 )}
-              </tbody>
-            </>
+                 </tr>
+              
+            
           );
         })}
+        </tbody>
       </table>
     </>
   );
 }
 
 export default Page;
+
+

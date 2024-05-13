@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} m-20`}>
+      <body className={`${inter.className} px-4 md:px-8 xl:px-12`}>
         <Providers>
 
         {children}
